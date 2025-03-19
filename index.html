@@ -99,6 +99,22 @@
             padding: 15px;
             border: 1px dashed #33ff33;
             text-align: center;
+            display: none; /* Hide riddle box by default */
+        }
+        
+        .fade-in {
+            animation: fadeIn 1.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .highlight {
+            color: #ff33ff;
+            font-weight: bold;
+            text-shadow: 0 0 5px #ff33ff;
         }
     </style>
 </head>
@@ -110,21 +126,35 @@
     
     <main class="container">
         <div class="challenge-box">
-            <h2>Welcome, Hacker</h2>
-            <p>Hackers know that sometimes the most important information is Hidden right before your eyes. Always Keep examining Every Regular sentence Carefully. Reading between the lines Often Demands extra attention. Even when text appears normal, secrets may be hidden.</p>
-            <p>The digital world has many layers. Look carefully at what's presented to you. Examine each element with a hacker's mindset.</p>
-            <p>Sometimes what you seek is not hidden in complex code but in plain sight - if you know how to look.</p>
+            <h2>welcome, hacker</h2>
+            <p>
+                Hidden beneath the surface of digital realms, mysterious puzzles await your discovery. 
+                As you wander through encrypted passages, subtle hints emerge like whispers in the static. 
+                Ciphers and clues merge into an intricate tapestry, challenging both logic and imagination. 
+                Knowledge and acute observation become your steadfast ally in this maze of secrets. 
+                Every symbol and nuance in the code is a deliberate choice meant to obscure deeper meaning. 
+                Riddles interweave with the narrative, urging you to see beyond what’s immediately apparent. 
+                Silently, connections form as the story unfolds in unexpected ways. 
+                Each moment of insight adds another layer to the mystery you must unravel. 
+                Clues lie hidden in plain sight, waiting for those with the persistence to discover them. 
+                Real understanding comes from noticing the smallest details. 
+                Even the quietest whisper of data can lead to a breakthrough. 
+                Tread carefully, for every line holds a secret waiting to be decoded. 
+                2 critical hints are scattered throughout this tale. 
+                Only the determined can piece them together. 
+                TWO transcend conventional thinking to reveal the underlying truth. 
+                FIVE seekers of knowledge, your journey continues—follow the path to unlock what lies ahead.
+            </p>
         </div>
         
-        <div class="riddle-box">
-            <h3>The Riddle of the Next Destination</h3>
+        <div class="riddle-box" id="riddleBox">
+            <h3>the riddle of the next destination</h3>
             <p>To continue your journey beyond this page,</p>
             <p>Visit the place where this challenge is housed.</p>
             <p>Look for a file named "next_clue.txt"</p>
             <p>There you will find the path that leads forward.</p>
         </div>
     </main>
-    
     <footer>
         &copy; 2025 Hack Hunt Challenge | Made with ♥ by The Challenge Master
     </footer>
@@ -142,19 +172,31 @@
         const encodedPassword = "SEFDS0VSU0VDUkVUMjAyNQ==";
         console.log(encodedPassword);
         
-        // Check if someone looks at first letters of sentences in paragraph
+        // Handle the password check and reveal riddle
         document.addEventListener('DOMContentLoaded', function() {
+            const riddleBox = document.getElementById('riddleBox');
             const checkButton = document.createElement('button');
             checkButton.innerText = 'Check Password';
+            
             checkButton.addEventListener('click', function() {
                 const passwordInput = prompt('Enter the password you found:');
+                
                 // Encode the user input and compare with encoded password
                 if (encodeString(passwordInput) === encodedPassword) {
-                    alert('Correct! Now find the next destination as mentioned in the riddle.');
+                    // Success - show the riddle with animation
+                    riddleBox.classList.add('fade-in');
+                    riddleBox.style.display = 'block';
+                    
+                    // Show success message
+                    alert('Password correct! The next clue has been revealed.');
+                    
+                    // Scroll to the riddle
+                    riddleBox.scrollIntoView({ behavior: 'smooth' });
                 } else {
                     alert('Incorrect password. Keep looking!');
                 }
             });
+            
             document.querySelector('.challenge-box').appendChild(checkButton);
         });
     </script>
