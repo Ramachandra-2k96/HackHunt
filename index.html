@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Treasure Hunt</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #0a0a0a;
+            color: #33ff33;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px;
+            width: 100%;
+            background-color: #111;
+            box-shadow: 0 0 15px #33ff33;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px #33ff33;
+        }
+        
+        .container {
+            max-width: 800px;
+            padding: 20px;
+            margin: 20px;
+            background-color: #111;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(51, 255, 51, 0.5);
+        }
+        
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .challenge-box {
+            border: 2px solid #33ff33;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .glitch-text {
+            position: relative;
+            animation: glitch 3s infinite;
+        }
+        
+        @keyframes glitch {
+            0% { left: 0; color: #33ff33; }
+            1% { left: -2px; color: #ff33ff; }
+            2% { left: 2px; color: #33ffff; }
+            3% { left: 0; color: #33ff33; }
+            95% { left: 0; color: #33ff33; }
+            96% { left: -2px; color: #ff33ff; }
+            97% { left: 2px; color: #33ffff; }
+            100% { left: 0; color: #33ff33; }
+        }
+        
+        button {
+            background-color: #111;
+            color: #33ff33;
+            border: 1px solid #33ff33;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+        
+        button:hover {
+            background-color: #33ff33;
+            color: #111;
+            box-shadow: 0 0 10px #33ff33;
+        }
+        
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            background-color: #111;
+            font-size: 0.8rem;
+        }
+        
+        .riddle-box {
+            margin-top: 40px;
+            padding: 15px;
+            border: 1px dashed #33ff33;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="glitch-text">HACK HUNTER CHALLENGE</h1>
+        <p>Level 1: The hunt begins</p>
+    </header>
+    
+    <main class="container">
+        <div class="challenge-box">
+            <h2>Welcome, Hacker</h2>
+            <p>Hackers know that sometimes the most important information is Hidden right before your eyes. Always Keep examining Every Regular sentence Carefully. Reading between the lines Often Demands extra attention. Even when text appears normal, secrets may be hidden.</p>
+            <p>The digital world has many layers. Look carefully at what's presented to you. Examine each element with a hacker's mindset.</p>
+            <p>Sometimes what you seek is not hidden in complex code but in plain sight - if you know how to look.</p>
+        </div>
+        
+        <div class="riddle-box">
+            <h3>The Riddle of the Next Destination</h3>
+            <p>To continue your journey beyond this page,</p>
+            <p>Visit the place where this challenge is housed.</p>
+            <p>Look for a file named "next_clue.txt"</p>
+            <p>There you will find the path that leads forward.</p>
+        </div>
+    </main>
+    
+    <footer>
+        &copy; 2025 Hack Hunt Challenge | Made with ♥ by The Challenge Master
+    </footer>
+    
+    <script>
+        // Simple console log
+        console.log("Looking for clues? Keep searching...");
+        
+        // Encode the secret password
+        function encodeString(str) {
+            return btoa(str);
+        }
+        
+        // Stored encoded password
+        const encodedPassword = "SEFDS0VSU0VDUkVUMjAyNQ==";
+        console.log(encodedPassword);
+        
+        // Check if someone looks at first letters of sentences in paragraph
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkButton = document.createElement('button');
+            checkButton.innerText = 'Check Password';
+            checkButton.addEventListener('click', function() {
+                const passwordInput = prompt('Enter the password you found:');
+                // Encode the user input and compare with encoded password
+                if (encodeString(passwordInput) === encodedPassword) {
+                    alert('Correct! Now find the next destination as mentioned in the riddle.');
+                } else {
+                    alert('Incorrect password. Keep looking!');
+                }
+            });
+            document.querySelector('.challenge-box').appendChild(checkButton);
+        });
+    </script>
+</body>
+</html>
